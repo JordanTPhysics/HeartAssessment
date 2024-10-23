@@ -5,9 +5,9 @@
 @layer base {
   :root {
 
-    --background: 187 230 223;
-    --background-secondary: 169 219 209;
-    --foreground: 232 144 135;
+    --background: 230 167 203;
+    --background-secondary: 219 149 209;
+    --foreground: 232 144 235;
     --foreground-secondary: 236 42 30;
     --border: 152 0 46;
     --warning: 233 72 8;
@@ -41,6 +41,14 @@
       opacity: 0.85;
     }
     50% {
+      transform: scale(1.05);
+      opacity: .8;
+    }
+    67% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    83% {
       transform: scale(1.05);
       opacity: .8;
     }

@@ -90,7 +90,7 @@ class Home extends React.Component<{}, HomeState> {
     render() {
         return (
             <div className="bg-secondary lg:h-screen md:h-full sm:h-full text-text align-middle items-center text-center lg:p-20">
-                <div className="">
+                <div className=" ">
                     <ThemeSwitcher />
                     <h1 className="lg:text-5xl md:text-3xl text-2xl text-text align-middle">Healthy Heart, Healthy Mind</h1>
                 </div>
