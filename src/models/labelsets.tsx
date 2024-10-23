@@ -8,4 +8,5 @@ export const labelSets = {
     value: ["Worthless", "Little Worth", "Neutral", "Valuable", "Very Valuable"],
     optimism: ["Very Pessimistic", "Pessimistic", "Neutral", "Optimistic", "Very Optimistic"],
     numbers: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+    belief: ["No Belief", "Little Belief", "Neutral", "Belief", "Strong Belief"],
 }

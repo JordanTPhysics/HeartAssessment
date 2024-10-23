@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Slider } from '../components/ui/slider';
 import Tooltip from '../components/ui/tooltip';
 
+import { labelSets } from '../models/labelsets';
+
 interface QuestionProps {
     questionNo: number;
     question: string;
@@ -52,11 +54,11 @@ const Question: React.FC<QuestionProps> = ({ questionNo, question, name, labels,
 
     return (
         <div className={`lg:w-full align-middle sm:p-0 sm:m-0 md:m-2 md:p-2 lg:m-4 lg:p-4 rounded-md border-4 border-border bg-foreground shadow-xl ${animate ? 'animate' : ''}`}>
-            <span className='lg:text-3xl md:text-2xl text-lg p-2 sm:p-0 sm:m-0'>{questionNo}: <Tooltip text={name} tooltipText='Placeholder'/>  - {question}</span>
-            
+            <span className='lg:text-3xl md:text-2xl text-lg p-2 sm:p-0 sm:m-0'>{questionNo}: <Tooltip text={name} tooltipText='Placeholder' />  - {question}</span>
+
             <div className='flex justify-between pb-4 pt-4'>
-                {labels.map((label, index) => (
-                    <span className='lg:text-3xl md:text-2xl text-lg p-1 sm:p-0 sm:m-0' key={index}>{label}</span>
+                {labelSets.numbers.map((labelSet, index) => (
+                    <span className='lg:text-3xl md:text-2xl text-lg p-1 sm:p-0 sm:m-0' key={index}>{labelSet}</span>
                 ))}
             </div>
             <Slider
@@ -68,6 +70,12 @@ const Question: React.FC<QuestionProps> = ({ questionNo, question, name, labels,
                 onValueChange={handleSliderChange}
                 tabIndex={0}
             />
+            <div className='flex justify-between pb-4 pt-4'>
+                {labels.map((label, index) => (
+                    <span className='lg:text-2xl md:text-xl text-sm p-1 sm:p-0 sm:m-0' key={index}>{label}</span>
+                ))}
+            </div>
+            <span className='text-lg p-2 sm:p-0 sm:m-0'>Press Accept to mark the question as complete</span>
             <button onClick={handlePageChange} value="Previous" disabled={previousDisabled} className={`mt-10 bg-danger  ${previousDisabled && 'opacity-40'}`}>Previous</button>
             <button onClick={handlePageChange} value="Next" disabled={nextDisabled} className={`mt-10 bg-success ${nextDisabled && 'opacity-40'}`}>Next</button>
             <button onClick={handleAnswered} value="Accept" disabled={disabled} className={`mt-10 bg-success ${disabled && 'opacity-40'}`}>Accept</button>

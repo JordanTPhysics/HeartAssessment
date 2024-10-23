@@ -1,7 +1,7 @@
 import { PDFDocument, rgb } from 'pdf-lib';
 import { saveAs } from 'file-saver';
 import Chart from 'chart.js/auto';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 type ChartData = {
     labels: string[];
@@ -10,9 +10,13 @@ type ChartData = {
 
 const PdfWriter: React.FC<ChartData> = ({ labels, data }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
-
+    const [chart, setChart] = useState<Chart | null>(null);
     useEffect(() => {
         if (canvasRef.current) {
+            if (chart) {
+                chart.destroy();
+            }
+
             new Chart(canvasRef.current, {
                 type: 'bar',
                 data: {
